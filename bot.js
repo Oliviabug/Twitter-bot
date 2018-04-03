@@ -124,9 +124,9 @@ var T = new Twit({
 //  };
 
 
-// setInterval(tweetIt, 1000 * 60 * 60 * 24);
+setInterval(tweetIt, 1000 * 60 * 60 * 24);
 
-tweetIt();
+// tweetIt();
 
 function tweetIt(err, data, response){
 
