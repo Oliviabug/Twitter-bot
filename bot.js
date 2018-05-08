@@ -123,51 +123,53 @@ var T = new Twit({
 //
 //  };
 
-function myFunction() {
-    myVar = setInterval(tweetIt, 1000 * 60 * 60 * 24);
-}
-
-// tweetIt();
-
-function tweetIt(err, data, response){
-
-  var AlphaVantageAPI = require('alpha-vantage-cli').AlphaVantageAPI;
-
-  var yourApiKey = 'KV4H7VKIW1M4VTO0';
-  var alphaVantageAPI = new AlphaVantageAPI(yourApiKey, 'compact', true);
-
-  let dailyData =
-
-  alphaVantageAPI.getDailyData('MSFT')
-      .then(dailyData => {
-          dailyDataLow = JSON.stringify(dailyData[0]['Low'])
-          dailyDataHigh = JSON.stringify(dailyData[0]['High'])
-          dailyDataOpen = JSON.stringify(dailyData[0]['Open'])
-          console.log(dailyData);
-          var tweet = {
-            status: 'Yesterday, Microsoft opened with a ' + dailyDataOpen  + ' value on the stock market. It spiked at ' + dailyDataHigh + ' whereas its lowest value was ' +  dailyDataLow + '.'
-          }
-
-          T.post('statuses/update', tweet, tweeted);
 
 
-           function tweeted(err, data, response) {
-             if(err) {
-               console.log('Something went wrong');
-               console.log(err);
-             } else {
-               console.log('it worked!');
+setInterval(
+  function tweetIt(err, data, response){
 
+    var AlphaVantageAPI = require('alpha-vantage-cli').AlphaVantageAPI;
+
+    var yourApiKey = 'KV4H7VKIW1M4VTO0';
+    var alphaVantageAPI = new AlphaVantageAPI(yourApiKey, 'compact', true);
+
+    let dailyData =
+
+    alphaVantageAPI.getDailyData('MSFT')
+        .then(dailyData => {
+            dailyDataLow = JSON.stringify(dailyData[0]['Low'])
+            dailyDataHigh = JSON.stringify(dailyData[0]['High'])
+            dailyDataOpen = JSON.stringify(dailyData[0]['Open'])
+            console.log(dailyData);
+            var tweet = {
+              status: 'Yesterday, Microsoft opened with a ' + dailyDataOpen  + ' value on the stock market. It spiked at ' + dailyDataHigh + ' whereas its lowest value was ' +  dailyDataLow + '.'
+            }
+
+            T.post('statuses/update', tweet, tweeted);
+
+
+             function tweeted(err, data, response) {
+               if(err) {
+                 console.log('Something went wrong');
+                 console.log(err);
+               } else {
+                 console.log('it worked!');
+
+                 }
                }
-             }
-      })
-      .catch(err => {
-          console.error(err);
-      });
+        })
+        .catch(err => {
+            console.error(err);
+        });
 
 
 
-}
+  }, 1000 * 60 * 60 * 24);
+
+
+// function myFunction() {
+//     myVar = setInterval(tweetIt, 1000 * 60 * 60 * 24);
+// }
 
 
 
