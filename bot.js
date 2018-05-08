@@ -123,8 +123,9 @@ var T = new Twit({
 //
 //  };
 
-
-setInterval(tweetIt, 1000 * 60 * 60 * 24);
+function myFunction() {
+    myVar = setInterval(tweetIt, 1000 * 60 * 60 * 24);
+}
 
 // tweetIt();
 
