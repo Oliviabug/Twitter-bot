@@ -125,7 +125,6 @@ var T = new Twit({
 
 
 
-setInterval(
   function tweetIt(err, data, response){
 
     var AlphaVantageAPI = require('alpha-vantage-cli').AlphaVantageAPI;
@@ -163,8 +162,12 @@ setInterval(
         });
 
 
+};
 
-  }, 1000 * 60 * 60 * 24);
+tweetIt();
+
+setInterval(tweetIt, 1000 * 60 * 60 * 24);
+
 
 
 // function myFunction() {
