@@ -170,24 +170,6 @@ setInterval(tweetIt, 1000 * 60 * 60 * 24);
 
 
 
-// function myFunction() {
-//     myVar = setInterval(tweetIt, 1000 * 60 * 60 * 24);
-// }
-
-
-
-
-
-
-
-
-
-
-
-  // }
-//
-// }
-
 
 //
 // var stream = T.stream('user'); //setting up a user stream
