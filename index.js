@@ -41,89 +41,9 @@ var T = new Twit({
 
 
 
+  tweetIt();
 
-// tweetIt();
-//
-//
-//  function tweetIt(err, data, response) {
-//
-//    var encodeParameters = function(parameters) {
-//      var query_strings = [];
-//      for (var apikey in parameters) {
-//        if(parameters.hasOwnProperty(apikey)) {
-//          var params_strings = apikey + "=" + parameters[apikey];
-//          query_strings.push(params_strings);
-//        };
-//      };
-//      return query_strings.join("&");
-//    };
-//
-//    var processResponse = function(response) {
-//
-//      var first_currency = response['Realtime Currency Exchange Rate']['2. From_Currency Name'];
-//      var second_currency = response['Realtime Currency Exchange Rate']['4. To_Currency Name'];
-//      var exchange_rate = response['Realtime Currency Exchange Rate']['5. Exchange Rate'];
-//      console.log(first_currency);
-//
-//      var sentence = 'The exchange rate of the ' + first_currency + ' to ' + second_currency + ' is: ' + exchange_rate;
-//      console.log(sentence);
-//
-//      var tweet = {
-//        status: sentence
-//      }
-//
-//    }
-//
-//
-//    var doSearch = function() {
-//
-//      const apikey = 'KV4H7VKIW1M4VTO0'
-//      var currency_exchange = 'CURRENCY_EXCHANGE_RATE'
-//      var params = {
-//        function: currency_exchange,
-//        from_currency: 'USD',
-//        to_currency: 'JPY',
-//        apikey: apikey,
-//      };
-//
-//    var url = 'https://www.alphavantage.co/query';
-//
-//      var query_url = url + '?' + encodeParameters(params);
-//
-//      console.log(query_url);
-//
-//      var xhr = new XMLHttpRequest();
-//      xhr.open('GET', query_url);
-//      xhr.addEventListener('load', function(){
-//        var response = JSON.parse(this.response);
-//        console.log(response);
-//
-//      });
-//      xhr.send();
-//      processResponse(response);
-//
-//    };
-//
-//    doSearch();
-//
-//      var tweet = {
-//        status: sentence
-//      }
-//
-//      function tweeted(err, data, response) {
-//        if(err) {
-//          console.log('Something went wrong');
-//        } else {
-//          console.log('it worked!');
-//
-//          }
-//        }
-//
-//       T.post('statuses/update', tweet, tweeted);
-//
-//  };
-
-
+  setInterval(tweetIt, 1000 * 60 * 60 * 24);
 
   function tweetIt(err, data, response){
 
@@ -164,9 +84,7 @@ var T = new Twit({
 
 };
 
-tweetIt();
 
-setInterval(tweetIt, 1000 * 60 * 60 * 24);
 
 
 
