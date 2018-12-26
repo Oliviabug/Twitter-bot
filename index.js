@@ -43,7 +43,7 @@ var T = new Twit({
 
   tweetIt();
 
-  setInterval(tweetIt, 1000 * 60 * 60 * 24);
+  setInterval(tweetIt(), 1000 * 60 * 60 * 24);
 
   function tweetIt(err, data, response){
 
